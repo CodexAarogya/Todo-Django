@@ -1,0 +1,195 @@
+{% extends "base.html" %} 
+{% block title %}Register{% endblock title %} 
+{% block content %}
+
+<div class="container">
+  <div class="row justify-content-center align-items-center min-vh-100 py-5">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-7 col-xl-6">
+      <div class="card shadow-lg border-0">
+        <!-- Card Header -->
+        <div class="card-header bg-primary text-white text-center py-4">
+          <h2 class="mb-2 fw-bold">
+            <i class="fas fa-user-plus me-2"></i>Create Account
+          </h2>
+          <p class="mb-0 opacity-75">Join us today! It's free and easy</p>
+        </div>
+        
+        <!-- Card Body -->
+        <div class="card-body p-4 p-sm-5">
+          <!-- Display Messages -->
+            {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                        {% for message in messages %}
+                            {{message}}
+                        {% endfor %}
+                </div>
+            {% endif %}
+          <!-- Registration Form -->
+          <form method="POST" action="">
+            {% csrf_token %}
+            
+            <!-- Full Name Row -->
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="firstName" class="form-label">
+                  <i class="fas fa-user me-1"></i>First Name
+                </label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="firstName" 
+                  name="first_name"
+                  placeholder="John"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="lastName" class="form-label">
+                  <i class="fas fa-user me-1"></i>Last Name
+                </label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="lastName" 
+                  name="last_name"
+                  placeholder="Doe"
+                  required
+                />
+              </div>
+            </div>
+            
+            <!-- Username -->
+            <div class="mb-3">
+              <label for="username" class="form-label">
+                <i class="fas fa-at me-1"></i>Username
+              </label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="username" 
+                name="username"
+                placeholder="Choose a unique username"
+                required
+              />
+              <div class="form-text">Username must be unique and 3-20 characters long</div>
+            </div>
+            
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label">
+                <i class="fas fa-envelope me-1"></i>Email Address
+              </label>
+              <input 
+                type="email" 
+                class="form-control" 
+                id="email" 
+                name="email"
+                placeholder="your.email@example.com"
+                required
+              />
+            </div>
+            
+            <!-- Password Row -->
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="password" class="form-label">
+                  <i class="fas fa-lock me-1"></i>Password
+                </label>
+                <input 
+                  type="password" 
+                  class="form-control" 
+                  id="password" 
+                  name="password"
+                  placeholder="Enter password"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="confirmPassword" class="form-label">
+                  <i class="fas fa-lock me-1"></i>Confirm Password
+                </label>
+                <input 
+                  type="password" 
+                  class="form-control" 
+                  id="confirmPassword" 
+                  name="confirm_password"
+                  placeholder="Re-enter password"
+                  required
+                />
+              </div>
+            </div>
+            
+            <!-- Terms and Conditions -->
+            <div class="form-check mb-4">
+              <input 
+                class="form-check-input" 
+                type="checkbox" 
+                id="terms" 
+                name="terms"
+                required
+              />
+              <label class="form-check-label" for="terms">
+                I agree to the <a href="#!" class="text-decoration-none">Terms and Conditions</a> 
+                and <a href="#!" class="text-decoration-none">Privacy Policy</a>
+              </label>
+            </div>
+            
+            
+            
+            <!-- Submit Button -->
+            <div class="d-grid gap-2 mb-3">
+              <button type="submit" class="btn btn-primary btn-lg py-3 fw-bold">
+                <i class="fas fa-user-plus me-2"></i>Create Account
+              </button>
+            </div>
+            
+            <!-- Divider -->
+            <div class="d-flex align-items-center mb-3">
+              <hr class="flex-grow-1">
+              <span class="px-3 text-muted small">OR SIGN UP WITH</span>
+              <hr class="flex-grow-1">
+            </div>
+            
+            <!-- Social Registration -->
+            <div class="row g-2 mb-4">
+              <div class="col-4">
+                <button type="button" class="btn btn-outline-danger w-100">
+                  <i class="fab fa-google"></i>
+                </button>
+              </div>
+              <div class="col-4">
+                <button type="button" class="btn btn-outline-primary w-100">
+                  <i class="fab fa-facebook-f"></i>
+                </button>
+              </div>
+              <div class="col-4">
+                <button type="button" class="btn btn-outline-dark w-100">
+                  <i class="fab fa-github"></i>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Login Link -->
+            <div class="text-center">
+              <p class="text-muted mb-0">
+                Already have an account? 
+                <a href="{% url 'LoginView' %}" class="text-primary fw-bold text-decoration-none">
+                  Sign In
+                </a>
+              </p>
+            </div>
+          </form>
+        </div>
+        
+        <!-- Card Footer -->
+        <div class="card-footer bg-light text-center py-3">
+          <small class="text-muted">
+            <i class="fas fa-shield-alt me-1"></i>
+            Your data is secure and encrypted
+          </small>
+        </div>
+      </div>
+            
+</div>
+
+{% endblock content %}
